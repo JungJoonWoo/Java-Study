@@ -6,6 +6,6 @@ public class AccountMain {
         a.deposit(10000);
         a.withdraw(9000);
         a.withdraw(2000);
-        
+
     }
 }
