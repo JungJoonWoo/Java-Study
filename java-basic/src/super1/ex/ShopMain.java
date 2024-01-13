@@ -13,4 +13,5 @@ public class ShopMain {
         int sum = book.getPrice() + album.getPrice() + movie.getPrice();
         System.out.println("총 가격 = " + sum);
     }
+    
 }
