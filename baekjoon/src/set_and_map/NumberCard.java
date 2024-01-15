@@ -48,6 +48,7 @@ public class NumberCard {
             }
         }
         w.flush();
+
     }
 
     private static int checkValue(int key, int start, int end, int[] arr) {
