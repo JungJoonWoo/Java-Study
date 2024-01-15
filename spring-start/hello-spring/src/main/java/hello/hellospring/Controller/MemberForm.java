@@ -1,5 +1,6 @@
 package hello.hellospring.Controller;
 
+
 public class MemberForm {
     private String name;
 
