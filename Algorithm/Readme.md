@@ -42,3 +42,41 @@
 | Collections.swap() | - | - | - | - | - | 불가능 | O(1) | 리스트의 두 요소의 위치를 바꿉니다. |
 | Collections.max() | - | - | - | - | - | 불가능 | O(n) | 컬렉션에서 최대 요소를 찾습니다. |
 | Collections.min() | - | - | - | - | - | 불가능 | O(n) | 컬렉션에서 최소 요소를 찾습니다. |
+
+1. 스택(Stack) - Stack 클래스
+
+| 메서드 | 시간 복잡도 | 설명 |
+| --- | --- | --- |
+| push(E item) | O(1) | 스택의 top에 요소를 추가합니다. |
+| pop() | O(1) | 스택의 top에 있는 요소를 제거하고 반환합니다. |
+| peek() | O(1) | 스택의 top에 있는 요소를 반환합니다. |
+| empty() | O(1) | 스택이 비어있는지 확인합니다. |
+| search(Object o) | O(n) | 스택에서 특정 요소의 위치를 찾습니다. |
+1. 큐(Queue)
+    - LinkedList와 ArrayDeque, PriorityQueue 등이 구현체로 사용됩니다.
+
+| 메서드 | LinkedList 시간 복잡도 | ArrayDeque 시간 복잡도 | PriorityQueue 시간 복잡도 | 설명 |
+| --- | --- | --- | --- | --- |
+| add(E e) | O(1) | O(1) | O(log n) | 큐의 끝에 요소를 추가합니다. |
+| offer(E e) | O(1) | O(1) | O(log n) | 큐의 끝에 요소를 추가합니다. |
+| remove() | O(1) | O(1) | O(log n) | 큐의 시작에서 요소를 제거하고 반환합니다. |
+| poll() | O(1) | O(1) | O(log n) | 큐의 시작에서 요소를 제거하고 반환합니다. |
+| element() | O(1) | O(1) | O(1) | 큐의 시작에서 요소를 반환합니다. |
+| peek() | O(1) | O(1) | O(1) | 큐의 시작에서 요소를 반환합니다. |
+1. 덱(Deque)
+    - ArrayDeque와 LinkedList가 구현체로 사용됩니다.
+
+| 메서드 | ArrayDeque 시간 복잡도 | LinkedList 시간 복잡도 | 설명 |
+| --- | --- | --- | --- |
+| addFirst(E e) | O(1) | O(1) | 덱의 시작에 요소를 추가합니다. |
+| addLast(E e) | O(1) | O(1) | 덱의 끝에 요소를 추가합니다. |
+| offerFirst(E e) | O(1) | O(1) | 덱의 시작에 요소를 추가합니다. |
+| offerLast(E e) | O(1) | O(1) | 덱의 끝에 요소를 추가합니다. |
+| removeFirst() | O(1) | O(1) | 덱의 시작에서 요소를 제거하고 반환합니다. |
+| removeLast() | O(1) | O(1) | 덱의 끝에서 요소를 제거하고 반환합니다. |
+| pollFirst() | O(1) | O(1) | 덱의 시작에서 요소를 제거하고 반환합니다. |
+| pollLast() | O(1) | O(1) | 덱의 끝에서 요소를 제거하고 반환합니다. |
+| getFirst() | O(1) | O(1) | 덱의 시작에서 요소를 반환합니다. |
+| getLast() | O(1) | O(1) | 덱의 끝에서 요소를 반환합니다. |
+| peekFirst() | O(1) | O(1) | 덱의 시작에서 요소를 반환합니다. |
+| peekLast() | O(1) | O(1) | 덱의 끝에서 요소를 반환합니다. |
