@@ -1,38 +1,18 @@
 package sort;
 /*
-
+1. Arrays.sort에 Comparator 사용해 오버라이딩
  */
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
+
 public class Main {
-    public static void main(String[] args) throws Exception {
-        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter w = new BufferedWriter(new OutputStreamWriter(System.out));
-        int n = Integer.parseInt(r.readLine());
-        String[] arr = new String[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = r.readLine();
-        }
-        arr = Arrays.stream(arr).distinct().toArray(String[]::new);
-        Arrays.sort(arr, new Comparator<String>(){
-            @Override
-            public int compare(String s1, String s2){
-                if(s1.length() == s2.length()){
-                    return s1.compareTo(s2);
-                }
-                else
-                    return s1.length() - s2.length();
-            }
-        });
-        for (String s : arr) {
-            w.write(s + "\n");
+    public static void main(String[] args) {
 
-        }
-
-        w.flush();
-        w.close();
-        r.close();
     }
-
 }
