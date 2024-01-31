@@ -1,64 +1,70 @@
 package stack_queue_deque;
 /*
-확인해야하는 곳: 현재 줄 서 있는 곳의 가장 앞, 스택의 마지막
-두 개를 확인해 만약 차례가 맞다면 꺼내거나 팝, 아니라면 스택에 푸시
-first: 간식을 받을 수 있는 숫자
-last: 스택에 들어갈 수 있는 숫자
-5 2 1 4 3 -> 5 2 -> 5 4 -> nice
-5 1 3 2 4 -> nice
-6 4 5 2 1 3
+q s s q
+1 2 3 4
+
+2 2 3 1 -> 4
+
+4 2 3 2 -> 1
+
+7 2 3 4 -> 2
  */
 import java.io.*;
-import java.util.Stack;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter w = new BufferedWriter(new OutputStreamWriter(System.out));
-
         int n = Integer.parseInt(r.readLine());
-        Stack<Integer> stack = new Stack<>();
-        int[] arr = new int[n];
-        int first = 1;
-        int index = 0;
+
         StringTokenizer st = new StringTokenizer(r.readLine());
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-        }
 
-        boolean isNice = true;
-        while(index < n){
-
-            if (arr[index] == first) {
-                first++;
-            } else if (!stack.empty() && stack.peek() == first) {
-                stack.pop();
-                first++;
-                index--;
-
+        int[] type = new int[n];
+        int count = 0;
+        //type 확인
+        int stackCount = 0;
+        for (int i = 0; i < n; i++){
+            if (Integer.parseInt(st.nextToken()) == 0) {
+                //큐의 인덱스 확인 -> type = 1 2
+                type[count++] = i;
+                //1, 2번 입력만 배열에 넣음
             } else {
-                stack.push(arr[index]);
+                stackCount++;
             }
-            index++;
-
         }
-        while (!stack.isEmpty()){
-            if (stack.peek() != first) {
-                isNice = false;
+        //int[] deque = new int[count];
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        st = new StringTokenizer(r.readLine());
+        //값 삽입
+        int count1 = 0;
+        for (int i = 0; i < n; i++) {
+            if (stackCount == n) {
                 break;
             }
-            stack.pop();
-            first++;
+            if (type[count1] == i) {
+                deque.add(Integer.parseInt(st.nextToken()));
+                count1++;
+            } else {
+                st.nextToken();
+            }
         }
-        if (isNice) {
-            w.write("Nice");
-        }
-        else {
-            w.write("Sad");
+
+        int m = Integer.parseInt(r.readLine());
+        st = new StringTokenizer(r.readLine());
+        r.close();
+
+        for (int i = 0; i < m; i++) {
+            if(stackCount == n){
+                w.write(st.nextToken() + " ");
+            }
+            else {
+
+                deque.addFirst(Integer.parseInt(st.nextToken()));
+                w.write(deque.pollLast() + " ");
+            }
         }
         w.flush();
         w.close();
-        r.close();
     }
 }
