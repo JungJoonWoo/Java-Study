@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberServiceImpl implements MemberService {
 
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
@@ -24,8 +24,6 @@ public class MemberServiceImpl implements MemberService {
     }
 
     //테스트 용도
-
-
     public MemberRepository getMemberRepository() {
         return memberRepository;
     }
