@@ -16,5 +16,6 @@ public class RateDiscountPolicy implements DiscountPolicy {
             return price * discountPercent / 100;
         }
         return 0;
+
     }
 }
