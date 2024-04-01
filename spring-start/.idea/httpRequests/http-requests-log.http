@@ -1,0 +1,8 @@
+GET http://localhost:8080/hello-mvc
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-01-13T151745.400.json
+
+###

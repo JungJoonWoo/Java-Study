@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-233.13135.103">
+    <data-source name="H2" uuid="06d9c2bd-9f70-4314-9a5b-33f0c2abe2c0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping />
+    </data-source>
+    <data-source name="test@localhost" uuid="40330bb7-1d1c-4fa5-9368-5240f66db2b7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

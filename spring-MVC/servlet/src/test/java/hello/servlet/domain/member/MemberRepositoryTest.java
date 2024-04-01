@@ -4,14 +4,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 class MemberRepositoryTest {
+
     MemberRepository memberRepository = MemberRepository.getInstance();
 
     @AfterEach
@@ -22,27 +20,30 @@ class MemberRepositoryTest {
     @Test
     void save() {
         //given
-        Member member = new Member("Kim", 20);
+        Member member = new Member("hello", 20);
+
         //when
-        Member savemember = memberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
+
         //then
-        Member findMember = memberRepository.findById(savemember.getId());
-        assertThat(findMember).isEqualTo(member);
+        Member findMember = memberRepository.findById(savedMember.getId());
+        assertThat(findMember).isEqualTo(savedMember);
     }
 
     @Test
     void findAll() {
-
         //given
-        Member member1 = new Member("Kim", 20);
+        Member member1 = new Member("member1", 20);
+        Member member2 = new Member("member2", 30);
+
         memberRepository.save(member1);
-        Member member2 = new Member("Jung", 30);
         memberRepository.save(member2);
+
         //when
         List<Member> result = memberRepository.findAll();
+
         //then
         assertThat(result.size()).isEqualTo(2);
         assertThat(result).contains(member1, member2);
-        assertThat(result).isEqualTo(memberRepository.findAll());
     }
 }

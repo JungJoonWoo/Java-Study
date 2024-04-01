@@ -10,9 +10,8 @@ import java.io.IOException;
 
 @Component("/springmvc/request-handler")
 public class MyHttpRequestHandler implements HttpRequestHandler {
-
-  @Override
-  public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("MyHttpRequestHandler.handleRequest");
-  }
+    @Override
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("MyHttpRequestHandler.handleRequest");
+    }
 }

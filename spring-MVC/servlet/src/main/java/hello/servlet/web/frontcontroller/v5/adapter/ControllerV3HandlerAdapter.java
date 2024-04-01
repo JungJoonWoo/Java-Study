@@ -13,26 +13,28 @@ import java.util.Map;
 
 public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
+    @Override
+    public boolean supports(Object handler) {
+        return (handler instanceof ControllerV3);
+    }
 
-  @Override
-  public boolean supports(Object handler) {
-    return (handler instanceof ControllerV3);
-  }
+    @Override
+    public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
+        //MemberFormControllerV3
+        ControllerV3 controller = (ControllerV3) handler;
 
-  @Override
-  public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
-    ControllerV3 controller = (ControllerV3) handler;
+        Map<String, String> paramMap = createParamMap(request);
+        ModelView mv = controller.process(paramMap);
 
-    Map<String, String> paramMap = createParamMap(request);
-    ModelView mv = controller.process(paramMap);
+        return mv;
+    }
 
-    return mv;
-  }
+    private Map<String, String> createParamMap(HttpServletRequest request) {
+        Map<String, String> paramMap = new HashMap<>();
+        request.getParameterNames().asIterator()
+                .forEachRemaining(paramName -> paramMap.put(paramName, request.getParameter(paramName)));
+        return paramMap;
+    }
 
-  private static Map<String, String> createParamMap(HttpServletRequest request) {
-    Map<String, String> paramMap = new HashMap<>();
-    request.getParameterNames().asIterator()
-        .forEachRemaining(paramName -> paramMap.put(paramName, request.getParameter(paramName)));
-    return paramMap;
-  }
+
 }

@@ -23,7 +23,6 @@ public class FrontControllerServletV2 extends HttpServlet {
         controllerMap.put("/front-controller/v2/members/new-form", new MemberFormControllerV2());
         controllerMap.put("/front-controller/v2/members/save", new MemberSaveControllerV2());
         controllerMap.put("/front-controller/v2/members", new MemberListControllerV2());
-
     }
 
     @Override
@@ -36,6 +35,7 @@ public class FrontControllerServletV2 extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+
         MyView view = controller.process(request, response);
         view.render(request, response);
     }
