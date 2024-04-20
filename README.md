@@ -1,2 +1,2 @@
-# Java-Study
-자바 개인 공부
+# Spring-Study
+스프링&스프링부트 개인 공부
