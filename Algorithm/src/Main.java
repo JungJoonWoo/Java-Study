@@ -1,18 +1,17 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.StringTokenizer;
+import java.util.*;
+
 
 public class Main {
-
-  public static int n, m;
-  public static int[] visited = new int[100001];
-  public static int count = 1;
-  public static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-
+  static int n, m;
+  static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+  static int visited[] = new int[1001];
+  static int count = 1;
+  static int answer[] = new int[1001];
   public static void main(String[] args) throws IOException {
-    BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter w = new BufferedWriter(new OutputStreamWriter(System.out));
+    BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+
     StringTokenizer st = new StringTokenizer(r.readLine());
     n = Integer.parseInt(st.nextToken());
     m = Integer.parseInt(st.nextToken());
@@ -22,35 +21,71 @@ public class Main {
       graph.add(new ArrayList<>());
     }
 
-    for (int i = 1; i <= m; i++) {
+    for (int i = 0; i < m; i++) {
       st = new StringTokenizer(r.readLine());
       int u = Integer.parseInt(st.nextToken());
       int v = Integer.parseInt(st.nextToken());
       graph.get(u).add(v);
       graph.get(v).add(u);
     }
-    for (int i = 0; i <= n; i++) {
+
+    for (int i = 1; i <= n; i++) {
       Collections.sort(graph.get(i));
     }
+
     dfs(start);
-    for (int i = 1; i <= n; i++) {
-      w.write(visited[i] + "\n");
+
+    int index = start;
+
+    for (int i = 1; i <= count - 1; i++) {
+      w.write(answer[i] + " ");
+    }
+    w.write("\n");
+    visited = new int[1001];
+    count = 1;
+    answer = new int[1001];
+    bfs(start);
+    for (int i = 1; i <= count - 1; i++) {
+      w.write(answer[i] + " ");
     }
     w.flush();
     w.close();
     r.close();
+
+  }
+
+  private static void bfs(int start) {
+    Queue<Integer> q = new LinkedList<>();
+    visited[start] = 1;
+    answer[count++] = start;
+    for (int i = 0; i < graph.get(start).size(); i++) {
+      q.offer(graph.get(start).get(i));
+    }
+    while (!q.isEmpty()) {
+      int next = q.poll();
+      if (visited[next] != 0) {
+        continue;
+      }
+      if (visited[next] == 0) {
+        visited[next] = 1;
+        answer[count++] = next;
+      }
+      for (int i = 0; i < graph.get(next).size(); i++) {
+        q.offer(graph.get(next).get(i));
+      }
+    }
+
   }
 
   private static void dfs(int start) {
-    visited[start] = count++;
-
+    visited[start] = 1;
+    answer[count++] = start;
     for (int i = 0; i < graph.get(start).size(); i++) {
       int next = graph.get(start).get(i);
       if (visited[next] == 0) {
         dfs(next);
       }
-
     }
-
   }
+
 }
