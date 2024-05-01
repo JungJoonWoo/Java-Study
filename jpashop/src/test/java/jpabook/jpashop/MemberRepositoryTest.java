@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Rollback(false)
 public class MemberRepositoryTest {
   @Autowired
   MemberRepository memberRepository;
